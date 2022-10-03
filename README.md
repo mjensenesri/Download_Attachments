@@ -1,2 +1,2 @@
 # Download_Attachments
-Repository for creating a download attachments data management tool in ArcGIS Pro.
+Repository for creating a sample download attachments data management tool in ArcGIS Pro.
