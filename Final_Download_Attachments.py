@@ -76,10 +76,6 @@ try:
             for row in fcCursor:
                 subName = row[0]
                 featureID = row[1]
-                # print(f"{subName} and {guidID}")
-                newfldr = (f"{outFolder}\\{subName}")
-                if not os.path.exists(newfldr):
-                    os.makedirs(newfldr)
                 with arcpy.da.SearchCursor(attTabPath, [attID, "DATA", "ATT_NAME"]) as attCursor:
                     for rows in attCursor:
                         relID = rows[0]
@@ -89,6 +85,14 @@ try:
                             newfldr = (f"{outFolder}\\{subName}")
                             if not os.path.exists(newfldr):
                                 os.makedirs(newfldr)
+                                picPath = (f"{newfldr}\\{fileName}")
+                                # print(f"{featureID} = {relID}")
+                                f = open(picPath, 'wb')
+                                f.write(binaryRep.tobytes())
+                                del binaryRep
+                                del fileName
+                                f.close
+                            else:
                                 picPath = (f"{newfldr}\\{fileName}")
                                 # print(f"{featureID} = {relID}")
                                 f = open(picPath, 'wb')
